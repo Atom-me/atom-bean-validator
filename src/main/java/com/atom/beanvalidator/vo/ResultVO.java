@@ -5,12 +5,13 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 /**
- * 统一返回对象
+ * 统一返回对象.
+ * null 对象不返回
  *
  * @author Atom
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
-@JsonInclude(JsonInclude.Include.NON_NULL) // null 对象不返回
 public class ResultVO {
     private Boolean success;
     private String code;
