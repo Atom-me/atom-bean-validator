@@ -9,6 +9,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
+ * 校验对象属性值只能为执行枚举内的值
+ *
  * @author Atom
  */
 public class EnumValueValidator implements ConstraintValidator<EnumValue, String> {
