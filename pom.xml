@@ -63,6 +63,11 @@
             <artifactId>commons-beanutils</artifactId>
             <version>1.9.4</version>
         </dependency>
+        <dependency>
+            <groupId>com.xuxueli</groupId>
+            <artifactId>xxl-emoji</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

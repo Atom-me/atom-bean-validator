@@ -2,7 +2,6 @@ package com.atom.beanvalidator.web;
 
 import com.atom.beanvalidator.enums.ErrorCode;
 import com.atom.beanvalidator.vo.ResultVO;
-import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.CollectionUtils;
 import org.springframework.validation.FieldError;
@@ -14,8 +13,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Path;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -29,22 +28,56 @@ public class CtrlAdvice {
 
     @ExceptionHandler
     public ResultVO methodArgumentNotValidExceptionHandler(MethodArgumentNotValidException e) {
-        Map<String, String> collect = e.getBindingResult()
+
+
+      /*  //如果同一个属性上有多个校验，在toMap的时候就会报duplicate key exception
+        Map<String, String> fieldErrors = e.getBindingResult()
                 .getFieldErrors()
                 .stream()
-                .collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage));
+                .collect(Collectors.toMap(
+                        FieldError::getField,
+                        FieldError::getDefaultMessage));
 
         // 解析类上的校验注解的message 使用 getGlobalErrors
-        Map<String, String> collect1 = e.getBindingResult()
+        Map<String, String> globalErrors = e.getBindingResult()
                 .getGlobalErrors()
-                .stream().collect(Collectors.toMap(ObjectError::getObjectName, ObjectError::getDefaultMessage));
+                .stream().collect(Collectors.toMap(
+                        ObjectError::getObjectName,
+                        ObjectError::getDefaultMessage));
 
-        if (CollectionUtils.isEmpty(collect)) {
-            collect = collect1;
+        if (CollectionUtils.isEmpty(fieldErrors)) {
+            fieldErrors = globalErrors;
         } else {
-            collect.putAll(collect1);
+            fieldErrors.putAll(globalErrors);
         }
-        return ResultVO.fail(ErrorCode.PARAM_ERR, collect);
+*/
+
+        // 同一个属性有多个注解时，tomap --> toSet
+        Map<String, Set<String>> fieldErrors = e.getBindingResult()
+                .getFieldErrors()
+                .stream()
+                .collect(Collectors.groupingBy(
+                        FieldError::getField,
+                        Collectors.mapping(
+                                fieldError -> fieldError.getDefaultMessage(),
+                                Collectors.toSet())));
+
+
+        // 解析类上的校验注解的message 使用 getGlobalErrors
+        Map<String, Set<String>> globalErrors = e.getBindingResult()
+                .getGlobalErrors()
+                .stream().collect(Collectors.groupingBy(
+                        ObjectError::getObjectName,
+                        Collectors.mapping(
+                                objectError -> objectError.getDefaultMessage(),
+                                Collectors.toSet())));
+
+        if (CollectionUtils.isEmpty(fieldErrors)) {
+            fieldErrors = globalErrors;
+        } else {
+            fieldErrors.putAll(globalErrors);
+        }
+        return ResultVO.fail(ErrorCode.PARAM_ERR, fieldErrors);
     }
 
     @ExceptionHandler
