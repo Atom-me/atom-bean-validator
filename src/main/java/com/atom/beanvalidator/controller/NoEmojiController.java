@@ -1,6 +1,6 @@
 package com.atom.beanvalidator.controller;
 
-import com.atom.beanvalidator.dto.ReserveQuery;
+import com.atom.beanvalidator.dto.ReserveDTO;
 import com.atom.beanvalidator.vo.ResultVO;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +18,7 @@ public class NoEmojiController {
      * @return
      */
     @PostMapping(value = "/reserve")
-    public ResultVO reserve(@RequestBody @Validated ReserveQuery reserveQuery) {
+    public ResultVO reserve(@RequestBody @Validated ReserveDTO reserveDTO) {
 
         return null;
     }

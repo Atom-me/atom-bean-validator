@@ -11,7 +11,7 @@ import javax.validation.constraints.Null;
  * @author Atom
  */
 @Data
-public class Employee {
+public class EmployeeDTO {
 
     /**
      * 员工ID 使用分组校验的方式实现

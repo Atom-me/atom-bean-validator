@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.Length;
  * @author Atom
  */
 @Data
-public class ReserveQuery {
+public class ReserveDTO {
     /**
      * 预约时间
      */

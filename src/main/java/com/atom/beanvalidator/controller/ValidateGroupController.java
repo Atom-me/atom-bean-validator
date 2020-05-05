@@ -1,6 +1,6 @@
 package com.atom.beanvalidator.controller;
 
-import com.atom.beanvalidator.dto.Employee;
+import com.atom.beanvalidator.dto.EmployeeDTO;
 import com.atom.beanvalidator.validategroup.ValidateGroup;
 import com.atom.beanvalidator.vo.ResultVO;
 import org.springframework.validation.annotation.Validated;
@@ -32,11 +32,11 @@ public class ValidateGroupController {
      * 由于 ValidateGroup.AddGroup.class 没有继承 默认分组 Default.class
      * 所以，这里必须加上 默认分组Default.class才会校验Employee的name属性
      *
-     * @param employee
+     * @param employeeDTO
      * @return
      */
     @PostMapping("/addOperation")
-    public ResultVO addOperation(@RequestBody @Validated({ValidateGroup.AddGroup.class, Default.class}) Employee employee) {
+    public ResultVO addOperation(@RequestBody @Validated({ValidateGroup.AddGroup.class, Default.class}) EmployeeDTO employeeDTO) {
         return ResultVO.success();
     }
 
@@ -45,11 +45,11 @@ public class ValidateGroupController {
      * 由于 ValidateGroup.UpdateGroup.class 继承了 默认分组 Default.class
      * 所以，这里不需要加上 默认分组Default.class就会校验Employee的name属性
      *
-     * @param employee
+     * @param employeeDTO
      * @return
      */
     @PostMapping("/updateOperation")
-    public ResultVO updateOperation(@RequestBody @Validated(ValidateGroup.UpdateGroup.class) Employee employee) {
+    public ResultVO updateOperation(@RequestBody @Validated(ValidateGroup.UpdateGroup.class) EmployeeDTO employeeDTO) {
         return ResultVO.success();
     }
 }
