@@ -1,5 +1,6 @@
 package com.atom.beanvalidator.validategroup;
 
+import javax.validation.GroupSequence;
 import javax.validation.groups.Default;
 
 /**
@@ -14,4 +15,18 @@ public interface ValidateGroup {
 
     interface UpdateGroup extends Default {
     }
+
+
+    /**
+     * the sequence validator for one field
+     */
+    @GroupSequence({Sequence.First.class, Sequence.Second.class, Default.class})
+    interface Sequence {
+        interface First {
+        }
+
+        interface Second {
+        }
+    }
+
 }

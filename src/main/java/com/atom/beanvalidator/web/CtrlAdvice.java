@@ -52,6 +52,8 @@ public class CtrlAdvice {
         }
 */
 
+        log.error(e.getMessage());
+
         // 同一个属性有多个注解时，tomap --> toSet
         Map<String, Set<String>> fieldErrors = e.getBindingResult()
                 .getFieldErrors()
