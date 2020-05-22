@@ -29,5 +29,10 @@ public @interface EnumValueLimit {
 
     Class<? extends Payload>[] payload() default {};
 
+    /**
+     * 目标枚举类，即使用哪个枚举校验
+     *
+     * @return
+     */
     Class<?>[] target() default {};
 }

@@ -15,7 +15,10 @@ import java.lang.reflect.Method;
  */
 public class EnumValueLimitValidator implements ConstraintValidator<EnumValueLimit, String> {
 
-    Class<?>[] classes;
+    /**
+     * 目标枚举类，即使用哪个枚举校验
+     */
+    private Class<?>[] classes;
 
     @Override
     public void initialize(EnumValueLimit constraint) {
