@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
  *
  * @author Atom
  */
-public class EnumValueValidator implements ConstraintValidator<EnumValueLimit, String> {
+public class EnumValueLimitValidator implements ConstraintValidator<EnumValueLimit, String> {
 
     Class<?>[] classes;
 

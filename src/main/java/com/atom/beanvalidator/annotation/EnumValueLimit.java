@@ -1,7 +1,7 @@
 package com.atom.beanvalidator.annotation;
 
 
-import com.atom.beanvalidator.validator.EnumValueValidator;
+import com.atom.beanvalidator.validator.EnumValueLimitValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -19,7 +19,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  */
 @Target({FIELD})
 @Retention(RUNTIME)
-@Constraint(validatedBy = EnumValueValidator.class)
+@Constraint(validatedBy = EnumValueLimitValidator.class)
 @Documented
 public @interface EnumValueLimit {
 
