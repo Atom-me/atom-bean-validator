@@ -1,6 +1,6 @@
 package com.atom.beanvalidator.dto;
 
-import com.atom.beanvalidator.annotation.EnumValue;
+import com.atom.beanvalidator.annotation.EnumValueLimit;
 import com.atom.beanvalidator.enums.WeChatAuthEnum;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -18,7 +18,7 @@ public class TestEnumValueValidatorDTO {
      * userType=userInfo表示需要获取用户信息；
      * 默认值是baseInfo
      */
-    @EnumValue(target = WeChatAuthEnum.class, message = "userType不合法!")
+    @EnumValueLimit(target = WeChatAuthEnum.class, message = "userType不合法!")
     private String userType;
     /**
      * 重定向的业务地址

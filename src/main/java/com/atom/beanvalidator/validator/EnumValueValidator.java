@@ -1,7 +1,7 @@
 package com.atom.beanvalidator.validator;
 
 
-import com.atom.beanvalidator.annotation.EnumValue;
+import com.atom.beanvalidator.annotation.EnumValueLimit;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -13,12 +13,12 @@ import java.lang.reflect.Method;
  *
  * @author Atom
  */
-public class EnumValueValidator implements ConstraintValidator<EnumValue, String> {
+public class EnumValueValidator implements ConstraintValidator<EnumValueLimit, String> {
 
     Class<?>[] classes;
 
     @Override
-    public void initialize(EnumValue constraint) {
+    public void initialize(EnumValueLimit constraint) {
         this.classes = constraint.target();
     }
 

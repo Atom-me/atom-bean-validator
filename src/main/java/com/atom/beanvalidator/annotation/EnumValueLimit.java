@@ -21,7 +21,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Retention(RUNTIME)
 @Constraint(validatedBy = EnumValueValidator.class)
 @Documented
-public @interface EnumValue {
+public @interface EnumValueLimit {
 
     String message() default "";
 
