@@ -33,19 +33,10 @@ public class FieldListNotAllowAllBlankValidator implements ConstraintValidator<F
                 fieldValueList.add(propertyValue);
             } catch (Exception e) {
                 log.warn("invoke FieldListIsAllNullValidator method failure.");
-                e.printStackTrace();
             }
         });
 
-        return fieldValueListIsAllBlank(fieldValueList);
+        return fieldValueList.stream().anyMatch(fieldValue -> StringUtils.isNotBlank((CharSequence) fieldValue));
     }
 
-    private boolean fieldValueListIsAllBlank(List<Object> fieldValueList) {
-        for (Object fieldValue : fieldValueList) {
-            if (StringUtils.isNotBlank((CharSequence) fieldValue)) {
-                return true;
-            }
-        }
-        return false;
-    }
 }
