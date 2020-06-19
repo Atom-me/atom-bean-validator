@@ -14,7 +14,7 @@ import javax.validation.ConstraintValidatorContext;
  */
 public class EmojiValidator implements ConstraintValidator<NoEmoji, String> {
 
-    Class<?>[] classes;
+    private Class<?>[] classes;
 
     @Override
     public void initialize(NoEmoji constraint) {
@@ -22,13 +22,11 @@ public class EmojiValidator implements ConstraintValidator<NoEmoji, String> {
     }
 
     @Override
-    public boolean isValid(String value, ConstraintValidatorContext context) {
-
-        if (StringUtils.isBlank(value)) {
+    public boolean isValid(String content, ConstraintValidatorContext context) {
+        if (StringUtils.isBlank(content)) {
             return true;
-        } else {
-            return CollectionUtils.isEmpty(EmojiTool.findEmojis(value));
         }
+        return CollectionUtils.isEmpty(EmojiTool.findEmojis(content));
     }
 
 }
