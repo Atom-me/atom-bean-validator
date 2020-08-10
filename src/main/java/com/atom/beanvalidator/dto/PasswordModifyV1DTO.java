@@ -1,11 +1,10 @@
 package com.atom.beanvalidator.dto;
 
-import com.atom.beanvalidator.annotation.CanBeNullIfAnotherFieldEqualsSpecificValue;
+import com.atom.beanvalidator.annotation.AllowNullIfAnotherFieldEqualsSpecificValue;
 import com.atom.beanvalidator.annotation.EqualsFields;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 
 
 /**
@@ -15,7 +14,7 @@ import javax.validation.constraints.Pattern;
  * @author Atom
  */
 @Data
-@CanBeNullIfAnotherFieldEqualsSpecificValue(anotherFieldName = "scene", specificValue = "initFOAPWD", dependOnField = "oldPassword", message = "旧密码不能为空")
+@AllowNullIfAnotherFieldEqualsSpecificValue(anotherFieldName = "scene", specificValue = "initFOAPWD", dependOnField = "oldPassword", message = "旧密码不能为空")
 @EqualsFields(baseField = "newPassword", matchField = "confirmNewPassword", message = "新密码和确认新密码必须相同！")
 public class PasswordModifyV1DTO {
 

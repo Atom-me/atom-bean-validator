@@ -1,6 +1,6 @@
 package com.atom.beanvalidator.annotation;
 
-import com.atom.beanvalidator.validator.CanBeNullIfAnotherFieldEqualsSpecificValueValidator;
+import com.atom.beanvalidator.validator.AllowNullIfAnotherFieldEqualsSpecificValueValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -20,8 +20,8 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Target(ElementType.TYPE)
 @Documented
 @Retention(RUNTIME)
-@Constraint(validatedBy = {CanBeNullIfAnotherFieldEqualsSpecificValueValidator.class})
-public @interface CanBeNullIfAnotherFieldEqualsSpecificValue {
+@Constraint(validatedBy = {AllowNullIfAnotherFieldEqualsSpecificValueValidator.class})
+public @interface AllowNullIfAnotherFieldEqualsSpecificValue {
 
     String message() default "";
 

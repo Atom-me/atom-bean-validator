@@ -1,6 +1,6 @@
 package com.atom.beanvalidator.validator;
 
-import com.atom.beanvalidator.annotation.CanBeNullIfAnotherFieldEqualsSpecificValue;
+import com.atom.beanvalidator.annotation.AllowNullIfAnotherFieldEqualsSpecificValue;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
@@ -17,7 +17,7 @@ import static org.apache.commons.beanutils.BeanUtils.getProperty;
  * @author Atom
  */
 @Slf4j
-public class CanBeNullIfAnotherFieldEqualsSpecificValueValidator implements ConstraintValidator<CanBeNullIfAnotherFieldEqualsSpecificValue, Object> {
+public class AllowNullIfAnotherFieldEqualsSpecificValueValidator implements ConstraintValidator<AllowNullIfAnotherFieldEqualsSpecificValue, Object> {
 
     private String anotherFieldName;
 
@@ -26,7 +26,7 @@ public class CanBeNullIfAnotherFieldEqualsSpecificValueValidator implements Cons
     private String dependOnField;
 
     @Override
-    public void initialize(CanBeNullIfAnotherFieldEqualsSpecificValue constraintAnnotation) {
+    public void initialize(AllowNullIfAnotherFieldEqualsSpecificValue constraintAnnotation) {
         this.anotherFieldName = constraintAnnotation.anotherFieldName();
         this.specificValue = constraintAnnotation.specificValue();
         this.dependOnField = constraintAnnotation.dependOnField();
