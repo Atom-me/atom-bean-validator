@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.atom</groupId>
-    <artifactId>bean-validator</artifactId>
+    <artifactId>atom-bean-validator</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>bean-validator</name>
+    <name>atom-bean-validator</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
